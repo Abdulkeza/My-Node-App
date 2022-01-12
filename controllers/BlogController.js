@@ -1,11 +1,11 @@
-
-var Blog = require("../models/blog"); 
+import Blog from '../models/blog.js'
+// var Blog = require("../models/blog"); 
 
 
 
 //blog_index, blog_details, blog_create_get, blog_create_post, blog_delete
 
-const blog_index = (req, res)=>{
+export const blog_index = (req, res)=>{
     Blog.find()
       .sort({ createdAt: -1 })
       .then((result) => {
@@ -16,7 +16,7 @@ const blog_index = (req, res)=>{
       });
 }
 
-const blog_details = (req, res) =>{
+export const blog_details = (req, res) =>{
     const id = req.params.id;
     // console.log(id);
     Blog.findById(id) //find a specfic blog by ID
@@ -29,12 +29,12 @@ const blog_details = (req, res) =>{
 }
 
 
-const blog_create_get = (req, res)=>{
+export const blog_create_get = (req, res)=>{
     res.render("add-blog", { title: "Create_new" });
    
 }
 
-const blog_create_post = (req, res)=>{
+export const blog_create_post = (req, res)=>{
     // console.log(req.body);
     const blog = new Blog(req.body); //this is the insitance of Blog ---in blog.js
     blog
@@ -48,7 +48,7 @@ const blog_create_post = (req, res)=>{
 
 }
 
-const blog_delete = (req, res)=>{
+export const blog_delete = (req, res)=>{
     const id = req.params.id;
   
     Blog.findByIdAndDelete(id)
@@ -58,10 +58,10 @@ const blog_delete = (req, res)=>{
       console.log(err);
     });
 }
-module.exports ={
-    blog_index,
-    blog_details,
-    blog_create_get,
-    blog_create_post,
-    blog_delete
-}
+// module.exports ={
+//     blog_index,
+//     blog_details,
+//     blog_create_get,
+//     blog_create_post,
+//     blog_delete
+// }

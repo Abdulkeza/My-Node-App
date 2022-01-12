@@ -1,8 +1,10 @@
-const express = require("express");
-const morgan = require("morgan"); //middleware
-const mongoose = require("mongoose"); //mongoose to access database
+import express from 'express';
+import morgan from 'morgan';
+import mongoose from 'mongoose';
 
-const blogRoutes = require("./routes/blogRoutes");
+
+import blogRoutes from './routes/blogRoutes.js';
+
 
 const app = express(); //!!Express app
 
