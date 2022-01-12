@@ -1,7 +1,6 @@
 {
   "name": "myNode_jsApp",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "type": "module",
   "scripts": {
@@ -16,5 +15,18 @@
     "mongoose": "^6.1.5",
     "morgan": "^1.10.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abdulkeza/My-node-app.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Abdulkeza/My-node-app/issues"
+  },
+  "homepage": "https://github.com/Abdulkeza/My-node-app#readme",
+  "description": ""
 }

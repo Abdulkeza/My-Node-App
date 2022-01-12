@@ -1,22 +1,11 @@
-//EXPRESS
-
 const express = require("express");
+const morgan = require("morgan"); //middleware
+const mongoose = require("mongoose"); //mongoose to access database
 
-//middleware
-const morgan = require("morgan");
+const blogRoutes = require("./routes/blogRoutes");
 
-//mongoose to access database
+const app = express(); //!!Express app
 
-const mongoose = require("mongoose");
-
-//import blog module
-const { result } = require("lodash");
-
-const blogRoutes = require('./routes/blogRoutes')
-
-//!!Express app
-const app = express();
-// import router from './routes'
 //!!connect to mongoDB
 
 const dbURI =
@@ -25,6 +14,8 @@ mongoose
   .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
     app.listen(5000);
+
+    console.log("Database connected");
   })
   .catch((err) => {
     console.log(err);
@@ -33,10 +24,6 @@ mongoose
 //!!Register View engine
 
 app.set("view engine", "ejs");
-
-//!!Listen  for the request
-
-// app.listen(5000);
 
 // !!middleware for every single request && Static files
 
@@ -51,10 +38,11 @@ app.get("/", (req, res) => {
   res.redirect("/blogs");
 });
 
-//!! (Routes) Displaying All blogs
 
-// app.use('/blogs', blogRoutes)
-app.use(blogRoutes)
+
+//!! ROUTES (Displaying All blogs)
+
+app.use('/blogs', blogRoutes);
 
 
 //!!404  page
@@ -62,11 +50,3 @@ app.use(blogRoutes)
 app.use((req, res) => {
   res.status(404).render("404", { title: "404" });
 });
-
-//use() should be at the bottom of all other callbacks and it gonna be called if no matches.
-
-//!!"/" is the location/path to respond, "req": contain the info of request, "res": we use it to send response
-
-//u can set a folder of ur 'view engine' by ( app.set('views', 'myViews')) where myViews is the name of folder.
-// res.send('<h1>Home of Express</h1>') ;
-//sort({createdAt: -1}): this means the blogs will be displayed from the newest to the oldest

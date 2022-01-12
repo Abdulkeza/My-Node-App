@@ -1,10 +1,7 @@
 
 var Blog = require("../models/blog"); 
-// const getAllBlogs =  (req, res) => {
 
-// }
 
-// export default getAllBlogs;
 
 //blog_index, blog_details, blog_create_get, blog_create_post, blog_delete
 
@@ -34,6 +31,7 @@ const blog_details = (req, res) =>{
 
 const blog_create_get = (req, res)=>{
     res.render("add-blog", { title: "Create_new" });
+   
 }
 
 const blog_create_post = (req, res)=>{
