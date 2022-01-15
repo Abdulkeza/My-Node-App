@@ -1,10 +1,8 @@
-import express from 'express';
-import morgan from 'morgan';
-import mongoose from 'mongoose';
+import express from "express";
+import morgan from "morgan";
+import mongoose from "mongoose";
 
-
-import blogRoutes from './routes/blogRoutes.js';
-
+import blogRoutes from "./routes/blogRoutes.js";
 
 const app = express(); //!!Express app
 
@@ -15,7 +13,7 @@ const dbURI =
 mongoose
   .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
-    app.listen(5000);
+    app.listen(5000, ()=>{console.log(`listenning on 5000`)});
 
     console.log("Database connected");
   })
@@ -40,12 +38,15 @@ app.get("/", (req, res) => {
   res.redirect("/blogs");
 });
 
+//!!About page
 
+app.get("/about", (req, res) => {
+  res.render("about", { title: "About" });
+});
 
 //!! ROUTES (Displaying All blogs)
 
-app.use('/blogs', blogRoutes);
-
+app.use("/blogs", blogRoutes);
 
 //!!404  page
 
