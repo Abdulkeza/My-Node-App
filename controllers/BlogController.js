@@ -26,11 +26,11 @@ export const blog_details = (req, res) => {
     });
 };
 
-export const blog_create_get = (req, res) => {
+export const blog_create_get =  (req, res) => {
   res.render("add-blog", { title: "Create_new" });
 };
 
-export const blog_create_post = (req, res) => {
+export const blog_create_post = async(req, res) => {
   // console.log(req.body);
   const blog = new Blog(req.body); //this is the insitance of Blog ---in blog.js
   blog
